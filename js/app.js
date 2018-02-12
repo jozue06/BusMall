@@ -40,34 +40,42 @@ new Item('Wine-glass', 'img/Wine-glass.jpg');
 var imgRandom = function () {
   return Math.floor(Math.random() * allItems.length);
 };
+
+
 //function that makes images appear
-var itemRender = function(){
+function itemRender(){
 
   if (globalClicks === 25) {
     removeDummy();
   }
+
   img1 = imgRandom();
-  itemPic1.src = allItems[img1].filePath;
-  allItems[img1].timesDisplayed ++;
   img2 = imgRandom();
-  if (img1 === img2) {
-    img2 = imgRandom();
-  }
-  itemPic2.src = allItems[img2].filePath;
-  allItems[img2].timesDisplayed ++;
   img3 = imgRandom();
-  if (img1 === img2 || img2 === img3 || img1 === img3) {
-    img3 = imgRandom();
+  for (var i = 0; i < itemDisplayed.length; i++){
+    if (img1 === img2 || img2 === img3 || img1 === img3)
+    {
+      img1 = imgRandom();
+      img2 = imgRandom();
+      img3 = imgRandom();
+    }
+    if(img1 === itemDisplayed[i] || img2 === itemDisplayed[i] || img3 === itemDisplayed[i]){
+      img1 = imgRandom();
+      img2 = imgRandom();
+      img3 = imgRandom();
+    }
   }
+  itemPic1.src = allItems[img1].filePath;
+  itemPic2.src = allItems[img2].filePath;
   itemPic3.src = allItems[img3].filePath;
+  allItems[img1].timesDisplayed ++;
+  allItems[img2].timesDisplayed ++;
   allItems[img3].timesDisplayed ++;
   itemDisplayed.push(img1, img2, img3);
-  if (itemDisplayed.includes(img1) || itemDisplayed.includes(img2) || itemDisplayed.includes(img2))
-  {
-    imgRandom();
-  }
-};
+}
 itemRender();
+
+
 
 function handleClick(image){
   image.clickTotal++;
