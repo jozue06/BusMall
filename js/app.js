@@ -5,6 +5,9 @@ var img1;
 var img2;
 var img3;
 var itemDisplayed = [];
+var itemPic1 = document.getElementById('pic1');
+var itemPic2 = document.getElementById('pic2');
+var itemPic3 = document.getElementById('pic3');
 // var imageSection = document.getElementById('hide');
 // var resultsButton = document.getElementById('resultsButton');
 function Item(productName, filePath) {
@@ -39,47 +42,41 @@ var imgRandom = function () {
 };
 //function that makes images appear
 var itemRender = function(){
-  var itemPic1 = document.getElementById('pic1');
-  var itemPic2 = document.getElementById('pic2');
-  var itemPic3 = document.getElementById('pic3');
 
   if (globalClicks === 25) {
     removeDummy();
-  }
-  if(itemPic1 === itemPic2 || itemPic2 === itemPic3 || itemPic1 === itemPic3
-    || itemDisplayed.includes(itemPic1) || itemDisplayed.includes(itemPic2)
-    || itemDisplayed.includes(itemPic3)){
-    imgRandom();
   }
   img1 = imgRandom();
   itemPic1.src = allItems[img1].filePath;
   allItems[img1].timesDisplayed ++;
   img2 = imgRandom();
   if (img1 === img2) {
-    imgRandom();
+    img2 = imgRandom();
   }
   itemPic2.src = allItems[img2].filePath;
   allItems[img2].timesDisplayed ++;
   img3 = imgRandom();
   if (img1 === img2 || img2 === img3 || img1 === img3) {
-    imgRandom();
+    img3 = imgRandom();
   }
   itemPic3.src = allItems[img3].filePath;
   allItems[img3].timesDisplayed ++;
+  itemDisplayed.push(img1, img2, img3);
+  if (itemDisplayed.includes(img1) || itemDisplayed.includes(img2) || itemDisplayed.includes(img2))
+  {
+    imgRandom();
+  }
 };
 itemRender();
-
-var itemPic1 = document.getElementById('pic1');
-var itemPic2 = document.getElementById('pic2');
-var itemPic3 = document.getElementById('pic3');
 
 function handleClick(image){
   image.clickTotal++;
   globalClicks++;
   console.log('total clicks ' + globalClicks);
   console.log(image.productName + ' has ' + image.clickTotal + ' total votes.');
-  itemDisplayed.push(itemPic1, itemPic2, itemPic3);
   itemRender();
+  console.log(itemDisplayed);
+  itemDisplayed = [];
 }
 
 itemPic1.addEventListener('click', function(){
@@ -93,11 +90,9 @@ itemPic3.addEventListener('click', function(){
 });
 
 function removeDummy() {
-  var itemPic1 = document.getElementById('pic1');
-  var itemPic2 = document.getElementById('pic2');
-  var itemPic3 = document.getElementById('pic3');
   var container = document.getElementById('container');
   container.removeChild(itemPic1);
   container.removeChild(itemPic2);
   container.removeChild(itemPic3);
 }
+
