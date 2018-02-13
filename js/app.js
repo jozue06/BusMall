@@ -38,52 +38,36 @@ new Item('USB', 'img/usb.gif');
 new Item('Water-can', 'img/water-can.jpg');
 new Item('Wine-glass', 'img/Wine-glass.jpg');
 
-
 var imgRandom = function () {
   return Math.floor(Math.random() * allItems.length);
 };
 
-
 //function that makes images appear
 function itemRender(){
 
-  if (globalClicks <= 25) {
+  if (globalClicks === 25) {
     removeDummy();
   }
-  var currentlyShowing = [];
-  //make left image unique
-  currentlyShowing[0] = imgRandom();
-  while (itemDisplayed.indexOf(currentlyShowing[0]) !== -1) {
-    console.error('Duplicate, or in prior view! Re run!');
-    currentlyShowing[0] = imgRandom();
-  }
-  //make center image unique
-  currentlyShowing[1] = imgRandom();
-  while(currentlyShowing[0] === currentlyShowing[1] || itemDisplayed.indexOf(currentlyShowing[1]) !== -1) {
-    console.error('Duplicate at center, or in prior view! Re run!');
-    currentlyShowing[1] = imgRandom();
-  }
-  //make right image unique
-  currentlyShowing[2] = imgRandom();
-  while(currentlyShowing[0] === currentlyShowing[2] || currentlyShowing[1] === currentlyShowing[2] || itemDisplayed.indexOf(currentlyShowing[2]) !== -1) {
-    console.error('Duplicate at right! Re run it.');
-    currentlyShowing[2] = imgRandom();
-  }
-  // img1 = imgRandom();
-  // img2 = imgRandom();
-  // img3 = imgRandom();
+
+  /* ******************************************************
+  need to add while loop for each image and just run a random func for that image instead of running the whole itemRender.
+     ********************************************************* */
+    
+  img1 = imgRandom();
+  img2 = imgRandom();
+  img3 = imgRandom();
   itemPic1.src = allItems[img1].filePath;
   itemPic2.src = allItems[img2].filePath;
   itemPic3.src = allItems[img3].filePath;
   // allItems[img1].timesDisplayed ++;
   // allItems[img2].timesDisplayed ++;
   // allItems[img3].timesDisplayed ++;
-  // console.log('before function ' + itemDisplayed);
-  // itemDisplayed.push(img1, img2, img3);
-  // while (itemDisplayed[0] === img1 || itemDisplayed[1] === img2 || itemDisplayed[2] === img3 || itemDisplayed[0] === img3 || img1 === img2 || img2 === img3 || img1 === img3){
-  //   itemRender();
-  // }
-  // console.log('outside function ' + itemDisplayed);
+  console.log('before function ' + itemDisplayed);
+  itemDisplayed.push(img1, img2, img3);
+  while (itemDisplayed[0] === img1 || itemDisplayed[1] === img2 || itemDisplayed[2] === img3 || itemDisplayed[0] === img3 || img1 === img2 || img2 === img3 || img1 === img3){
+    itemRender();
+  }
+  console.log('outside function ' + itemDisplayed);
 }
 itemRender();
 
@@ -95,6 +79,7 @@ function handleClick(image){
   console.log(image.productName + ' has ' + image.clickTotal + ' total votes.');
   itemRender();
 }
+
 
 itemPic1.addEventListener('click', function(){
   handleClick(allItems[img1]);
