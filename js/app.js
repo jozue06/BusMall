@@ -68,12 +68,39 @@ function handleClick(event) {
 }
 
 function showtotals() {
+  var ctx = document.getElementById('chart').getContext('2d');
+ 
   for(var i = 0; i < Item.all.length; i++) {
-    var liEl = document.createElement('li');
-    liEl.textContent = ' ' + Item.all[i].name + ' has ' + Item.all[i].votes + ' votes in ' + Item.all[i].views + ' views. ';
-    Item.totals.appendChild(liEl);
+    data.push(Item.all[i].votes);
+    var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: Item.names,
+        datasets: [{
+          label: Item.all ,
+          data: data,
+          backgroundColor: labelColors
+        }]
+      },
+      options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
+      }
+    });    
+    // var liEl = document.createElement('li');
+    // liEl.textContent = ' ' + Item.all[i].name + ' has ' + Item.all[i].votes + ' votes in ' + Item.all[i].views + ' views. ';
+    // Item.totals.appendChild(liEl);
   }
 }
 
 Item.container.addEventListener('click', handleClick);
 renderItems();
+
+var data = [];
+//this is the name for each product
+var labelColors = ['red', 'blue', 'yellow', 'green', 'purple', 'orange'];
