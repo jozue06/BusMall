@@ -69,7 +69,6 @@ function handleClick(event) {
 
 function showtotals() {
   var ctx = document.getElementById('chart').getContext('2d');
- 
   for(var i = 0; i < Item.all.length; i++) {
     data.push(Item.all[i].votes);
     var myChart = new Chart(ctx, {
