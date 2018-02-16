@@ -77,8 +77,8 @@ function showtotals() {
       data: {
         labels: Item.names,
         datasets: [{
-          // label: Item.votes,
-          // label: Item.names,
+          label: 'Votes',
+          // labels: Item.names,
           data: data,
           backgroundColor: colors,
         }]
@@ -99,78 +99,13 @@ function showtotals() {
         }
       }
     });
-    // var liEl = document.createElement('li');
-    // liEl.textContent = ' ' + Item.all[i].name + ' has ' + Item.all[i].votes + ' votes in ' + Item.all[i].views + ' views. ';
-    // Item.totals.appendChild(liEl);
   }
 }
 
 Item.container.addEventListener('click', handleClick);
 renderItems();
-
 var data = [];
-//this is the name for each product
-var colors = ['#ffffe4',
-  '#fffcd7',
-  '#fff7c7',
-  '#fff1b3',
-  '#ffe99d',
-  '#ffdf85',
-  '#ffd36d',
-  '#fec456',
-  '#feb442',
-  '#fca330',
-  '#f99022',
-  '#f47e18',
-  '#ec6c10',
-  '#e05c0b',
-  '#d14e08',
-  '#bd4106',
-  '#a73705',
-  '#902f04',
-  '#792904',
-  '#662404'];
-
-// function getRandomColor() {
-//   var letters = '0123456789ABCDEF'.split('');
-//   var color = '#';
-//   for (var i = 0; i < Item.names.length; i++ ) {
-//     color += letters[Math.floor(Math.random() * 16)];
-//   }
-//   colors.push(color);
-//   return color;
-// }
-// getRandomColor();
+var colors = ['#ffffe4', '#fffcd7','#fff7c7','#fff1b3','#ffe99d','#ffdf85','#ffd36d','#fec456','#feb442','#fca330','#f99022','#f47e18','#ec6c10','#e05c0b','#d14e08','#bd4106','#a73705','#902f04','#792904','#662404'];
 
 
-/* *********************************DEMO****************************************** */
-
-
-
-// clear button demo
-
-// <button id="clearStorage">clear</button>
-
-
-// var tyler = {name:
-// 'Tyler',
-// instructor: false,
-// favNum: 6,
-// laughs: function() {
-//   alert('hahaha');
-// }
-
-// };
-
-// var rArray = ['rachel', 37,true, 'no-dog'];
-// var anArray = ['randon', 9, false, tyler, rArray];
-
-// var clearLS = document.getElementById('clearStorage');
-
-// clearLS.addEventListener('click', function(){
-//   console.log('clicked');
-//   localStorage.clear();
-// });
-
-// var retrieved = localStorage.getItem('clearStorage');
 
