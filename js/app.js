@@ -71,23 +71,21 @@ function showtotals() {
   var ctx = document.getElementById('chart').getContext('2d');
   for (var i = 0; i < Item.all.length; i++) {
     data.push(Item.all[i].votes);
-
     var myChart = new Chart(ctx, {
       type: 'bar',
       data: {
         labels: Item.names,
         datasets: [{
           label: 'Votes',
-          // labels: Item.names,
           data: data,
           backgroundColor: colors,
         }]
       },
       options: {
-        // title: {
-        //   display: true,
-        //   text: 'Results'
-        // },
+        title: {
+          display: true,
+          text: 'Results'
+        },
         scales: {
           yAxes: [{
             ticks: {
@@ -109,3 +107,12 @@ var colors = ['#ffffe4', '#fffcd7','#fff7c7','#fff1b3','#ffe99d','#ffdf85','#ffd
 
 
 
+
+
+
+
+
+
+
+
+//@jm6
