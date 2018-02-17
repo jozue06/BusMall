@@ -86,7 +86,7 @@ function showtotals() {
       options: {
         title: {
           display: true,
-          text: 'Results'
+          text: 'Results',
         },
         scales: {
           yAxes: [{
@@ -106,6 +106,7 @@ Item.container.addEventListener('click', handleClick);
 renderItems();
 var data = [];
 var colors = ['#ffffe4', '#fffcd7','#fff7c7','#fff1b3','#ffe99d','#ffdf85','#ffd36d','#fec456','#feb442','#fca330','#f99022','#f47e18','#ec6c10','#e05c0b','#d14e08','#bd4106','#a73705','#902f04','#792904','#662404'];
+
 
 
 
