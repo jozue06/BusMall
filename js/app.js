@@ -48,8 +48,6 @@ function renderItems() {
     Item.all[showing[i]].views += 1;
     Item.viewed[i] = showing[i];
   }
-  var strItems = JSON.stringify(Item.all);
-  localStorage.setItem('items', strItems);
 }
 
 function handleClick(event) {
@@ -70,6 +68,8 @@ function handleClick(event) {
 }
 
 function showtotals() {
+  var strItems = JSON.stringify(Item.all);
+  localStorage.setItem('items', strItems);
   var ctx = document.getElementById('chart').getContext('2d');
   for (var i = 0; i < Item.all.length; i++) {
     data.push(Item.all[i].votes);
